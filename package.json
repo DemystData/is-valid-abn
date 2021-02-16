@@ -7,14 +7,15 @@
   "source": "src/index.js",
   "sideEffects": false,
   "scripts": {
-    "build": "yarn build-esm && yarn build-umd",
-    "build-esm": "BABEL_ENV=production-esm babel src -d dist/esm --ignore **/*.spec.js",
-    "build-umd": "BABEL_ENV=production-umd babel src -d dist/umd --ignore **/*.spec.js",
+    "build": "yarn build-esm && yarn build-umd && yarn tsc",
+    "build-esm": "BABEL_ENV=production-esm babel src -d dist/esm --ignore **/*.spec.js --extensions .ts",
+    "build-umd": "BABEL_ENV=production-umd babel src -d dist/umd --ignore **/*.spec.js --extensions .ts",
     "clean": "rimraf dist",
     "jest": "jest",
     "lint": "eslint src/ --ext .jsx,.js",
     "prepublishOnly": "yarn clean && yarn build",
-    "test": "yarn lint && yarn jest"
+    "test": "yarn lint && yarn jest",
+    "tsc": "tsc"
   },
   "keywords": [
     "validation",
@@ -29,6 +30,7 @@
     "@babel/cli": "^7.4.0",
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.0",
+    "@babel/preset-typescript": "^7.12.0",
     "eslint": "^7.12.0",
     "eslint-config-wojtekmaj": "^0.5.0",
     "jest": "^26.6.0",

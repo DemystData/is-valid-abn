@@ -1,6 +1,6 @@
 const weights = [10, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
 
-export default function isValidABN(rawAbn) {
+export default function isValidABN(rawAbn: string | number): boolean {
   if (!rawAbn) {
     return false;
   }
